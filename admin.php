@@ -34,18 +34,18 @@ class admin_plugin_toucher extends DokuWiki_Admin_Plugin {
 
         if ($this->getConf('admin_only')) {
             if (!$INFO[isadmin]) {
-                msg('Plugin toucher failed: you must be admin to touch configuration',-1);
+                msg($this->getLang('admin_fail'),-1);
                 return false;
             }
         }
         $this->touchFiles();
-        msg('Plugin toucher touched configuration files',1);
+        msg($this->getLang('msg_touched'),1);
         return true;
     }
 
     public function html() {
         ptln('<h1>' . $this->getLang('menu') . '</h1>');
-        ptln('<p>Configuration files have been just touched.</p>');
+        ptln('<p>'.$this->getLang('text_touched').'</p>');
     }
 }
 
